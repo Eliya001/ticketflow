@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f1117;
+    margin: 0;
+}
+
+.venue-container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    color: #e5e7eb;
+}
+
+.stage {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 45px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    font-size: 14px;
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.35);
+}
+
+.seat-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.seat-row {
+    display: flex;
+    gap: 12px;
+}
+
+.seat {
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 10px 10px 5px 5px;
+    font-weight: 700;
+    font-size: 13px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.seat:hover:not(:disabled) {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.seat:disabled {
+    cursor: not-allowed;
+}
+
+.seat.available {
+    background: linear-gradient(160deg, #22c55e, #16a34a);
+}
+
+.seat.locked {
+    background: linear-gradient(160deg, #eab308, #ca8a04);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.seat.booked {
+    background: linear-gradient(160deg, #ef4444, #dc2626);
+    opacity: 0.75;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 26px;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.legend-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+.status-message {
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.status-message.success {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.status-message.error {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.back-button:hover {
+    color: #f9fafb;
+}
+
+.booking-card {
+    background: #1a1d27;
+    border: 1px solid #2d313f;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.status-tag.confirmed {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+}
+
+.status-tag.pending {
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+}
+
+.status-tag.cancelled {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+.nav-button {
+    background: #1a1d27;
+    border: 1px solid #2d313f;
+    color: #e5e7eb;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.nav-button:hover {
+    background: #23273a;
+}

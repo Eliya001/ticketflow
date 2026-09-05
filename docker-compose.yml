@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: ticketflow
+      POSTGRES_PASSWORD: ticketflow_pass
+      POSTGRES_DB: ticketflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  seat-inventory:
+    build: ./services/seat-inventory
+    ports:
+      - "4001:4001"
+    environment:
+      DATABASE_URL: postgresql://ticketflow:ticketflow_pass@postgres:5432/ticketflow
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+
+  booking-api:
+    build: ./services/booking-api
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: postgresql://ticketflow:ticketflow_pass@postgres:5432/ticketflow
+      SEAT_SERVICE_URL: http://seat-inventory:4001
+      PAYMENT_SERVICE_URL: http://payment-mock:4002
+    depends_on:
+      - postgres
+      - seat-inventory
+      - payment-mock
+
+  payment-mock:
+    build: ./services/payment-mock
+    ports:
+      - "4002:4002"
+
+  notification-worker:
+    build: ./services/notification-worker
+    restart: on-failure
+    environment:
+      DATABASE_URL: postgresql://ticketflow:ticketflow_pass@postgres:5432/ticketflow
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
