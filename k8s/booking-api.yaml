@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booking-api
+  namespace: ticketflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: booking-api
+  template:
+    metadata:
+      labels:
+        app: booking-api
+    spec:
+      containers:
+        - name: booking-api
+          image: acrticketflowdeveliya.azurecr.io/booking-api:v1
+          ports:
+            - containerPort: 4000
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: ticketflow-secrets
+                  key: DATABASE_URL
+            - name: SEAT_SERVICE_URL
+              value: http://seat-inventory:4001
+            - name: PAYMENT_SERVICE_URL
+              value: http://payment-mock:4002
+            - name: PORT
+              value: "4000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: booking-api
+  namespace: ticketflow
+spec:
+  selector:
+    app: booking-api
+  ports:
+    - port: 4000
+      targetPort: 4000
