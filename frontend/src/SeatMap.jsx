@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SeatMap.css';
 
-const SEAT_API = 'http://localhost:4001';
-const BOOKING_API = 'http://localhost:4000';
+const INGRESS_IP = '52.224.188.5';
+const SEAT_API = `http://${INGRESS_IP}/api/seats`;
+const BOOKING_API = `http://${INGRESS_IP}/api/bookings`;
 
 function SeatMap({ eventId, userId }) {
     const [seats, setSeats] = useState([]);
@@ -14,7 +15,7 @@ function SeatMap({ eventId, userId }) {
 
     useEffect(() => {
         fetchSeats();
-        const ws = new WebSocket('ws://localhost:4001');
+        const ws = new WebSocket(`ws://${INGRESS_IP}/api/seats/`);
 
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data);
