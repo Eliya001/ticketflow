@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const BOOKING_API = 'http://localhost:4000';
+const BOOKING_API = 'http://52.224.188.5/api/bookings';
 
 function MyBookings({ userId, onBack }) {
     const [bookings, setBookings] = useState([]);

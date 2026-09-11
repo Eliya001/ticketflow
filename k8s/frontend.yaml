@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: acrticketflowdeveliya.azurecr.io/frontend:v2
+          image: acrticketflowdeveliya.azurecr.io/frontend:v4
           ports:
             - containerPort: 3000
 

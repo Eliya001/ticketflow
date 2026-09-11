@@ -8,7 +8,7 @@ function App() {
     return (
         <div style={{ minHeight: '100vh', background: '#0f1117', fontFamily: "'Inter', sans-serif" }}>
             <div style={{
-                height: '260px',
+                height: '340px',
                 maxWidth: '750px',
                 margin: '0 auto',
                 backgroundImage: `linear-gradient(180deg, rgba(15,17,23,0.2) 0%, rgba(15,17,23,1) 100%), url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80')`,
