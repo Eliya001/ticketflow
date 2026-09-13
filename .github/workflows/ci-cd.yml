@@ -27,7 +27,7 @@ jobs:
     name: Secret scan (gitleaks)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Run gitleaks
@@ -58,9 +58,9 @@ jobs:
         id: detect-node
         run: |
           if [ -f "${{ matrix.context }}/package.json" ]; then
-            echo "is_node=true" >> $GITHUB_OUTPUT"
+            echo "is_node=true" >> "$GITHUB_OUTPUT"
           else
-            echo "is_node=false" >> "GITHUB_OUTPUT"
+            echo "is_node=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Detect Python project
         id: detect-python
