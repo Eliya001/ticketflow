@@ -88,7 +88,7 @@ jobs:
         run: npm run lint --if-present
 
       - name: Test (Node)
-        if: steps.detect-node.output.is_node == 'true'
+        if: steps.detect-node.outputs.is_node == 'true'
         working-directory: ${{ matrix.context }}
         run: npm test --if-present -- --ci
 
