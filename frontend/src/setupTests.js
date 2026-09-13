@@ -6,4 +6,4 @@ class MockWebSocket {
   }
 }
 
-global.WebSocket = MockWebSocket;
+globalThis.WebSocket = MockWebSocket;
