@@ -48,7 +48,7 @@ function MyBookings({ userId, onBack }) {
     );
 }
 MyBookings.propTypes = {
-  userId: PropTypes.string.isRequired
+  userId: PropTypes.string.isRequired,
   onBack: PropTypes.func.isRequired,
 };
 export default MyBookings;
