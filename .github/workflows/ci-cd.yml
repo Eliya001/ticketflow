@@ -210,7 +210,7 @@ jobs:
           context: ${{ matrix.context }}
           push: true
           tags: |
-            ${{ env.ACR_LOGIN_SERVER }}/${{ matrix.service }}:${{ steps.vars.output.tag }}
+            ${{ env.ACR_LOGIN_SERVER }}/${{ matrix.service }}:${{ steps.vars.outputs.tag }}
             ${{ env.ACR_LOGIN_SERVER }}/${{ matrix.service }}:latest
           cache-from: type=gha,scope=${{ matrix.service }}
 
