@@ -95,6 +95,10 @@ app.post('/seats/:seatId/confirm', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 4001;
-server.listen(PORT, () => {
+if (require.main === module) {
+  server.listen(PORT, () => {
     console.log(`Seat-inventory service running on port ${PORT}`);
-});
+  });
+}
+
+module.exports = app;

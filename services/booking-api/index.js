@@ -82,6 +82,10 @@ app.get('/users/:userId/bookings', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
+if (require.main === module) {
+  app.listen(PORT, () => {
     console.log(`Booking-api service running on port ${PORT}`);
-});
+  });
+}
+
+module.exports = app;
