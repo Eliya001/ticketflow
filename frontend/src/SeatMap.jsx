@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import './SeatMap.css';
 
 const INGRESS_IP = '52.224.188.5';
@@ -171,5 +172,8 @@ function SeatMap({ eventId, userId }) {
         </div>
     );
 }
-
+SeatMap.propTypes = {
+  eventId: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
+};
 export default SeatMap;

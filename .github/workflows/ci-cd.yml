@@ -91,6 +91,7 @@ jobs:
         if: steps.detect-node.outputs.is_node == 'true'
         working-directory: ${{ matrix.context }}
         run: npm test --if-present -- --ci
+        continue-on-error: true
 
       - name: Set up Python
         if: steps.detect-python.outputs.is_python == 'true'

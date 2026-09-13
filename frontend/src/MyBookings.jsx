@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const BOOKING_API = 'http://52.224.188.5/api/bookings';
 
@@ -46,5 +47,8 @@ function MyBookings({ userId, onBack }) {
         </div>
     );
 }
-
+MyBookings.propTypes = {
+  userId: PropTypes.string.isRequired
+  onBack: PropTypes.func.isRequired,
+};
 export default MyBookings;
