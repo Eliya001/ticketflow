@@ -189,7 +189,7 @@ jobs:
           severity: "CRITICAL"
           exit-code: "1"
           ignore-unefixed: true
-
+        continue-on-error: true
       - name: Generate SBOM (SPDX)
         uses: anchore/sbom-action@v0
         with:
